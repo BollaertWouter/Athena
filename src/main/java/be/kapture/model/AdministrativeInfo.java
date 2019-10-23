@@ -1,5 +1,7 @@
 package be.kapture.model;
 
+import lombok.Builder;
+
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.validation.constraints.NotBlank;
@@ -8,6 +10,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Embeddable
+@Builder
 public class AdministrativeInfo implements Serializable {
     private static final long serialVersionUID = 1L;
     @NotBlank

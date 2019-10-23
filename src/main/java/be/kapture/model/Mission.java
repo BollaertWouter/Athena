@@ -1,11 +1,14 @@
 package be.kapture.model;
 
+import lombok.Builder;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.Set;
 
+@Builder
 @Entity
 @Table(name = "missions")
 public class Mission implements Serializable {

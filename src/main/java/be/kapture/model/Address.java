@@ -1,9 +1,12 @@
 package be.kapture.model;
 
+import lombok.Builder;
+
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotBlank;
 
 @Embeddable
+@Builder
 class Address {
     @NotBlank
     private String street;
