@@ -1,4 +1,4 @@
 package be.kapture.config.be.kapture.model;
 
-public class Contactable {
+class ContactInfo {
 }

@@ -1,14 +1,17 @@
 package be.kapture.config.be.kapture.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "missions")
-public class Mission {
+public class Mission implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,8 +26,28 @@ public class Mission {
             joinColumns = @JoinColumn(name = "mission_id"),
             inverseJoinColumns = @JoinColumn(name="person_id"))
     private Set<Person> developers;
+    @Version
+    private int version;
+
+    public long getId() {
+        return id;
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public boolean isBillable() {
+        return isBillable;
+    }
+
+    public Client getClient() {
+        return client;
+    }
 
 
-
+    public Set<Person> getDevelopers() {
+        return Collections.unmodifiableSet(developers);
+    }
 
 }

@@ -6,42 +6,35 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Entity
 @Table(appliesTo = "persons")
-public class Person {
+public class Person implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private long administrativeInfoId;
+	@NotNull
+	private AdministrativeInfo administrativeInfo;
+	@NotNull
 	private PersonType type;
 
-	public Person(long administrativeInfoId, PersonType type) {
-		this.administrativeInfoId = administrativeInfoId;
-		this.type = type;
-	}
 
 	public long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public long getAdministrativeInfoId() {
-		return administrativeInfoId;
-	}
-
-	public void setAdministrativeInfoId(long administrativeInfoId) {
-		this.administrativeInfoId = administrativeInfoId;
+	public AdministrativeInfo getAdministrativeInfo() {
+		return administrativeInfo;
 	}
 
 	public PersonType getType() {
 		return type;
 	}
 
-	public void setType(PersonType type) {
+	public void setType(@NotNull PersonType type) {
 		this.type = type;
 	}
 }
