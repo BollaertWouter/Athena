@@ -1,7 +1,22 @@
 package be.kapture.config.be.kapture.dao;
 
 import be.kapture.config.be.kapture.model.Person;
+import org.hibernate.annotations.Table;
 
-public class PersonDao implements Dao<Person> {
+import javax.persistence.Entity;
+import java.util.List;
+import java.util.Optional;
 
+@Entity
+@Table(appliesTo = "persons")
+public class PersonDao extends AbstractDao<Person> {
+	@Override
+	public Optional<Person> get(long id) {
+		return Optional.empty();
+	}
+
+	@Override
+	public List<Person> getAll() {
+		return null;
+	}
 }
