@@ -1,8 +1,9 @@
-package be.kapture.config.be.kapture.dao;
+package be.kapture.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
 
 public abstract class AbstractDao<T> implements Dao<T> {
 

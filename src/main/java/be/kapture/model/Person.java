@@ -1,11 +1,8 @@
-package be.kapture.config.be.kapture.model;
+package be.kapture.model;
 
 import org.hibernate.annotations.Table;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
@@ -17,9 +14,11 @@ public class Person implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	@NotNull
+	@Embedded
 	private AdministrativeInfo administrativeInfo;
 	@NotNull
 	private PersonType type;
+
 
 
 	public long getId() {

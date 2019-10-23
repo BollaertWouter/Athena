@@ -1,6 +1,6 @@
-package be.kapture.config.be.kapture.dao;
+package be.kapture.dao;
 
-import be.kapture.config.be.kapture.model.Person;
+import be.kapture.model.Person;
 import org.hibernate.annotations.Table;
 
 import javax.persistence.Entity;

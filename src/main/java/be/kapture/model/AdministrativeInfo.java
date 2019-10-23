@@ -1,7 +1,7 @@
-package be.kapture.config.be.kapture.model;
+package be.kapture.model;
 
+import javax.persistence.Embedded;
 import javax.validation.constraints.*;
-import org.springframework.lang.NonNull;
 
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotBlank;
@@ -20,6 +20,7 @@ public class AdministrativeInfo implements Serializable {
     @NotNull
     private Sex sex;
     @NotNull
+    @Embedded
     private ContactInfo contactInfo;
 
     public String getFirstName() {

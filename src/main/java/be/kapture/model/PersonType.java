@@ -1,4 +1,4 @@
-package be.kapture.config.be.kapture.model;
+package be.kapture.model;
 
 public enum PersonType {
 

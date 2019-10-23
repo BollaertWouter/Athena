@@ -1,4 +1,4 @@
-package be.kapture.config.be.kapture.model;
+package be.kapture.model;
 
 public enum Sex {
     M("Male", 0), F("Female", 1), X("Undefined", 2);

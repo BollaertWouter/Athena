@@ -1,11 +1,9 @@
-package be.kapture.config.be.kapture.model;
+package be.kapture.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 
 @Entity

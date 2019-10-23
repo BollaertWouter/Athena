@@ -1,4 +1,4 @@
-package be.kapture.config.be.kapture.dao;
+package be.kapture.dao;
 
 import java.util.List;
 import java.util.Optional;
