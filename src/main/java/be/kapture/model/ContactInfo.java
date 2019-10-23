@@ -30,7 +30,7 @@ class ContactInfo {
         String result = formatNumbers(telNumber);
         if(validateNumber(result)){
             this.telNumber=result;
-        } else throw new IllegalArgumentException();
+        } else {throw new IllegalArgumentException();}
     }
 
     public String getMobileNumber() {
@@ -41,7 +41,7 @@ class ContactInfo {
         String result = formatNumbers(mobileNumber);
         if(validateNumber(result)){
             this.mobileNumber=result;
-        } else throw new IllegalArgumentException();
+        } else {throw new IllegalArgumentException();}
     }
 
     public String getEmail() {
@@ -51,7 +51,7 @@ class ContactInfo {
     public void setEmail(@NotBlank  String email) {
         if(validateEmail(email)){
             this.email = email;
-        }else throw new IllegalArgumentException();
+        }else {throw new IllegalArgumentException();}
     }
 
     public String getFax() {
@@ -62,7 +62,7 @@ class ContactInfo {
         String result = formatNumbers(fax);
         if(validateNumber(result)){
             this.fax=result;
-        } else throw new IllegalArgumentException();
+        } else {throw new IllegalArgumentException();}
     }
 
     boolean validateEmail (String email){

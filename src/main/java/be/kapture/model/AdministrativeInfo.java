@@ -1,13 +1,11 @@
 package be.kapture.model;
 
-import javax.persistence.Embedded;
-import javax.validation.constraints.*;
-
 import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Embeddable
 public class AdministrativeInfo implements Serializable {
@@ -31,7 +29,7 @@ public class AdministrativeInfo implements Serializable {
     public void setFirstName( @NotBlank(message = "name can't be empty") String firstName) {
         if(isValid(firstName)) {
             this.firstName = firstName;
-        }else throw new IllegalArgumentException();
+        }else {throw new IllegalArgumentException();}
     }
 
     public String getLastName() {
@@ -41,7 +39,7 @@ public class AdministrativeInfo implements Serializable {
     public void setLastName(@NotBlank(message = "name can't be empty") String lastName) {
         if(isValid(lastName)) {
             this.lastName = lastName;
-        }else throw new IllegalArgumentException();
+        }else {throw new IllegalArgumentException();}
     }
 
     public LocalDate getDateOfBirth() {
