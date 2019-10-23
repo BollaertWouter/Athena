@@ -9,7 +9,7 @@ public abstract class AbstractDao<T> implements Dao<T> {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	protected Session getSession() {
+	private Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
 
