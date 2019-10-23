@@ -26,44 +26,55 @@ class ContactInfo {
         return telNumber;
     }
 
-    public void setTelNumber(String telNumber) {
-        this.telNumber = telNumber;
+    public void setTelNumber(@NotBlank String telNumber) {
+        String result = formatNumbers(telNumber);
+        if(validateNumber(result)){
+            this.telNumber=result;
+        } else throw new IllegalArgumentException();
     }
 
     public String getMobileNumber() {
         return mobileNumber;
     }
 
-    public void setMobileNumber(String mobileNumber) {
-        this.mobileNumber = mobileNumber;
+    public void setMobileNumber(@NotBlank String mobileNumber) {
+        String result = formatNumbers(mobileNumber);
+        if(validateNumber(result)){
+            this.mobileNumber=result;
+        } else throw new IllegalArgumentException();
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(@NotBlank  String email) {
+        if(validateEmail(email)){
+            this.email = email;
+        }else throw new IllegalArgumentException();
     }
 
     public String getFax() {
         return fax;
     }
 
-    public void setFax(String fax) {
-        this.fax = fax;
+    public void setFax(@NotBlank String fax) {
+        String result = formatNumbers(fax);
+        if(validateNumber(result)){
+            this.fax=result;
+        } else throw new IllegalArgumentException();
     }
 
-    public boolean validateEmail(String email){
+    boolean validateEmail (String email){
         String regex = "^[\\w-_.+]*[\\w-_.]@([\\w]+\\.)+[\\w]+[\\w]$";
         return email.matches(regex);
     }
 
-    public boolean validateNumber(String number){
+    boolean validateNumber(String number){
         return number.matches("[0-9]*");
     }
 
-    public String formatNumbers(String number){
+    String formatNumbers(String number){
         return number.replaceAll(" ","");
     }
 

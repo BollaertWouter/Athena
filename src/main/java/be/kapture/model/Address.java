@@ -22,7 +22,9 @@ class Address {
     }
 
     public void setStreet(@NotBlank String street) {
-        this.street = street;
+        if(isValid(street)){
+            this.street = street;
+        } else throw new IllegalArgumentException();
     }
 
     public String getNumber() {
@@ -30,7 +32,9 @@ class Address {
     }
 
     public void setNumber(@NotBlank String number) {
-        this.number = number;
+        if(isValid(number)){
+            this.number = number;
+        } else throw new IllegalArgumentException();
     }
 
     public String getBox() {
@@ -38,7 +42,9 @@ class Address {
     }
 
     public void setBox(@NotBlank String box) {
-        this.box = box;
+        if(isValid(box)){
+            this.box = box;
+        } else throw new IllegalArgumentException();
     }
 
     public String getCity() {
@@ -46,7 +52,9 @@ class Address {
     }
 
     public void setCity(@NotBlank String city) {
-        this.city = city;
+        if(isValid(city)){
+            this.city = city;
+        } else throw new IllegalArgumentException();
     }
 
     public String getPostalCode() {
@@ -54,7 +62,9 @@ class Address {
     }
 
     public void setPostalCode(@NotBlank String postalCode) {
-        this.postalCode = postalCode;
+        if(isValid(postalCode)){
+            this.postalCode = postalCode;
+        } else throw new IllegalArgumentException();
     }
 
     public String getCountry() {
@@ -62,6 +72,14 @@ class Address {
     }
 
     public void setCountry(@NotBlank String country) {
-        this.country = country;
+        if(isValid(country)){
+            this.country = country;
+        } else throw new IllegalArgumentException();
     }
+
+    private boolean isValid(String input){
+        String regex = "([aA-zZ0-9])*";
+        return input.matches(regex);
+    }
+
 }
