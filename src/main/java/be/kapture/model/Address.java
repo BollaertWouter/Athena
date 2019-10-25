@@ -4,6 +4,7 @@ import lombok.Builder;
 
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotBlank;
+import java.util.Objects;
 
 @Embeddable
 @Builder
@@ -19,6 +20,8 @@ class Address {
     private String postalCode;
     @NotBlank
     private String country;
+
+    protected Address(){}
 
     public String getStreet() {
         return street;
@@ -85,4 +88,34 @@ class Address {
         return input.matches(regex);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return street.equals(address.street) &&
+                number.equals(address.number) &&
+                box.equals(address.box) &&
+                city.equals(address.city) &&
+                postalCode.equals(address.postalCode) &&
+                country.equals(address.country);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(street, number, box, city, postalCode, country);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Address{");
+        sb.append("street='").append(street).append('\'');
+        sb.append(", number='").append(number).append('\'');
+        sb.append(", box='").append(box).append('\'');
+        sb.append(", city='").append(city).append('\'');
+        sb.append(", postalCode='").append(postalCode).append('\'');
+        sb.append(", country='").append(country).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

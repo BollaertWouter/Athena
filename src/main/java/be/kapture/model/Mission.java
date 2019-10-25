@@ -51,4 +51,16 @@ public class Mission implements Serializable {
         return Collections.unmodifiableSet(developers);
     }
 
+
+    @Override
+    public String toString() {
+        return "Mission{" +
+                "id=" + id +
+                ", duration=" + duration +
+                ", isBillable=" + isBillable +
+                ", client=" + client +
+                ", developers=" + developers +
+                ", version=" + version +
+                '}';
+    }
 }

@@ -7,6 +7,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 @Embeddable
 @Builder
@@ -21,7 +22,7 @@ class ContactInfo {
     private String email;
     private String fax;
 
-    private ContactInfo() {
+    protected ContactInfo() {
     }
 
     public static class ContactInfoBuilder {
@@ -134,4 +135,32 @@ class ContactInfo {
         return number.replaceAll(" ", "");
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ContactInfo that = (ContactInfo) o;
+        return address.equals(that.address) &&
+                Objects.equals(telNumber, that.telNumber) &&
+                mobileNumber.equals(that.mobileNumber) &&
+                email.equals(that.email) &&
+                Objects.equals(fax, that.fax);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(address, telNumber, mobileNumber, email, fax);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("ContactInfo{");
+        sb.append("address=").append(address);
+        sb.append(", telNumber='").append(telNumber).append('\'');
+        sb.append(", mobileNumber='").append(mobileNumber).append('\'');
+        sb.append(", email='").append(email).append('\'');
+        sb.append(", fax='").append(fax).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

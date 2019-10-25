@@ -8,6 +8,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Embeddable
 @Builder
@@ -24,6 +25,8 @@ public class AdministrativeInfo implements Serializable {
     @NotNull
     @Embedded
     private ContactInfo contactInfo;
+
+    protected AdministrativeInfo(){}
 
     public String getFirstName() {
         return firstName;
@@ -68,5 +71,34 @@ public class AdministrativeInfo implements Serializable {
     private boolean isValid(String input){
         String regex = "([aA-zZ0-9])*";
         return input.matches(regex);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AdministrativeInfo that = (AdministrativeInfo) o;
+        return firstName.equals(that.firstName) &&
+                lastName.equals(that.lastName) &&
+                dateOfBirth.equals(that.dateOfBirth) &&
+                sex == that.sex;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, dateOfBirth, sex);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("AdministrativeInfo{");
+        sb.append("firstName='").append(firstName).append('\'');
+        sb.append(", lastName='").append(lastName).append('\'');
+        sb.append(", dateOfBirth=").append(dateOfBirth);
+        sb.append(", sex=").append(sex);
+
+        sb.append(", contactInfo=").append(contactInfo.toString());
+        sb.append('}');
+        return sb.toString();
     }
 }
